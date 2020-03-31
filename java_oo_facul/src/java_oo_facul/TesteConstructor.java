@@ -11,20 +11,20 @@ public class TesteConstructor {
 		
 		//entrada de dados para depositos
 		Scanner input = new Scanner(System.in);
-		System.out.println("\nDeseja Fazer alguma operação? S - Sim / N - Não : ");
-		String op = input.next();
-		while (op.equals("s")) {
+		System.out.println("\nDeseja Fazer alguma operação? 1 - Sim / 0 - Não : ");
+		int op = input.nextInt();
+		while (op == (1)) {
 			System.out.println("\nQual operação deseja fazer? D - Depósito / S - Saque : ");
 		    String operacao = input.next();
 		    System.out.println();
-	        if (operacao.equals("d")) {
+	        if (operacao.equalsIgnoreCase("d")) {
 	        	System.out.println("\nPor favor entre com o deposito: ");
 	    		double valorDeposito = input.nextDouble();
 	    		conta.deposito(valorDeposito);
 	    		conta.imprimirDados();
 	    		System.out.println("\n--------------------");
 	        }
-	        else if (operacao.equals("s")) {
+	        else if (operacao.equalsIgnoreCase("s")) {
 	        	System.out.println("\nPor favor entre com o saque: ");
 	        	double valorSaque = input.nextDouble();
 	        	conta.saque(valorSaque);
@@ -32,9 +32,14 @@ public class TesteConstructor {
 	        	System.out.println("\n--------------------");
 	        	
 	        }
-	        System.out.println("\nDeseja Fazer outra operação? S - Sim / N - Não : ");
-	        String oper = input.next();
-	        if (oper.equals("n")) {
+	        
+	        else {
+	        	System.out.println("\nNão conseguimos indentificar o que deseja - OPERAÇÃO FINALIZADA");
+	        	break;
+	        }
+	        System.out.println("\nDeseja Fazer outra operação? 1 - Sim / 0 - Não : ");
+	        int oper = input.nextInt();
+	        if (oper != 1) {
 	        break;
 	        }
 		}
