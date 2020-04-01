@@ -16,7 +16,7 @@ public class Conta {
 		System.out.printf(
 				"Numero da conta: "+ numConta
 				+ "\nTitular: " + titular 
-				+ "\nSaldo: " + saldo);
+				+ "\nSaldo: " +  String.format("%.2f", saldo));
 	}
 
 	public void deposito(double deposito) {
