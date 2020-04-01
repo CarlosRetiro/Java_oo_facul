@@ -28,13 +28,13 @@ public class TesteConstructor {
 			String operacao = input.next();
 			System.out.println();
 			if (operacao.equalsIgnoreCase("d")) {
-				System.out.println("\nPor favor entre com o deposito: ");
+				System.out.println("\nPor favor, digite o valor do depósito: ");
 				double valorDeposito = input.nextDouble();
 				conta.deposito(valorDeposito);
 				conta.imprimirDados();
 				System.out.println("\n--------------------");
 			} else if (operacao.equalsIgnoreCase("s")) {
-				System.out.println("\nPor favor entre com o saque: ");
+				System.out.println("\nPor favor, digite o valor do saque: ");
 				double valorSaque = input.nextDouble();
 				conta.saque(valorSaque);
 				conta.imprimirDados();
