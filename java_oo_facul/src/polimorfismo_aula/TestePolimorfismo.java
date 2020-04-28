@@ -20,6 +20,8 @@ public class TestePolimorfismo {
 		contaFisica.saque(valor1, 0.2);
 		
 		System.out.println(contaFisica.toString());
+		
+		input.close();
 
 	}
 
