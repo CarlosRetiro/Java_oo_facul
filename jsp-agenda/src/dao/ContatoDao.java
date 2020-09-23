@@ -4,6 +4,10 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 import Modelo.Contato;
 
@@ -40,6 +44,44 @@ public class ContatoDao {
 			e.printStackTrace();
 		}
 		
+	}
+	public List<Contato> getLista() {
+		try {
+			List<Contato> contatos = new ArrayList<>();
+
+			PreparedStatement stmt = this.connection
+					.prepareStatement("SELECT * FROM contatos");
+			ResultSet rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				Contato contato = montaContatoComResultSet(rs);
+				contatos.add(contato);
+			}
+			return contatos;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	private Contato montaContatoComResultSet(ResultSet rs) {
+		try {
+			Contato contato = new Contato();
+
+			contato.setId(rs.getLong("id"));
+			contato.setNome(rs.getString("nome"));
+			contato.setEmail(rs.getString("email"));
+			contato.setEndereco(rs.getString("endereco"));
+
+			Calendar dataNascimento = Calendar.getInstance();
+			dataNascimento.setTime(rs.getDate("dataNascimento"));
+			contato.setDataNascimento(dataNascimento);
+
+			return contato;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
